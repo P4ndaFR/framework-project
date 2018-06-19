@@ -1,3 +1,7 @@
 front_office_homepage:
     path:     /
     defaults: { _controller: FrontOfficeBundle:Default:index }
+
+front_office_trajets:
+    path:     /trajets
+    defaults: { _controller: FrontOfficeBundle:Trajets:show }

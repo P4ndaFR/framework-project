@@ -1,0 +1,12 @@
+<html>
+  <head>
+    <title>Trajets</title>
+  </head>
+  <body>
+    <table>
+      {% for item in trajets %}
+        <tr><td>Distance: {{ item.nbKm }}</td></tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
