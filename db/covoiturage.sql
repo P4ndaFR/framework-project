@@ -46,9 +46,9 @@ INSERT INTO ville (id, ville, cp) VALUES (1, 'Brest', '29200');
 INSERT INTO ville (id, ville, cp) VALUES (2, 'La Rochelle', '17000');
 INSERT INTO ville (id, ville, cp) VALUES (3, 'Paris', '75000');
 
-INSERT INTO internaute (id, nom, prenom, tel, mail, voiture_id, ville_id) VALUES (1, 'Dupont', 'Jean', '11.11.11.11.11', 'jean.dupond@yopmail.com', 1, 1);
-INSERT INTO internaute (id, nom, prenom, tel, mail, voiture_id, ville_id) VALUES (2, 'Dusel', 'Martin', '22.22.22.22.22', 'martin.dusel@yopmail.com', 2, 2);
-INSERT INTO internaute (id, nom, prenom, tel, mail, voiture_id, ville_id) VALUES (3, 'Duchateau', 'René', '33.33.33.33.33', 'rene.duchateau@yopmail.com', 3, 3);
+INSERT INTO internaute (id, nom, prenom, tel, mail, voiture_id, ville_id) VALUES (1, 'Dupont', 'Jean', '1111111111', 'jean.dupond@yopmail.com', 1, 1);
+INSERT INTO internaute (id, nom, prenom, tel, mail, voiture_id, ville_id) VALUES (2, 'Dusel', 'Martin', '2222222222', 'martin.dusel@yopmail.com', 2, 2);
+INSERT INTO internaute (id, nom, prenom, tel, mail, voiture_id, ville_id) VALUES (3, 'Duchateau', 'René', '3333333333', 'rene.duchateau@yopmail.com', 3, 3);
 
 INSERT INTO trajet (id, nb_km, date, internaute_id, ville_id, ville_id1) VALUES (1, '500', STR_TO_DATE('1-01-2001', '%d-%m-%Y'), 1, 1, 2);
 INSERT INTO trajet (id, nb_km, date, internaute_id, ville_id, ville_id1) VALUES (2, '600', STR_TO_DATE('2-02-2002', '%d-%m-%Y'), 2, 2, 3);
