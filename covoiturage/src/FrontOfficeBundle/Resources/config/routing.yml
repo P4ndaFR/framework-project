@@ -1,13 +1,15 @@
-front_office_homepage:
-    path:     /
-    defaults: { _controller: FrontOfficeBundle:Default:index }
-
 front_office_trajets:
-    path:     /trajets
+    path:     /
     defaults: { _controller: FrontOfficeBundle:Trajets:show }
 
 front_office_internaute:
     path:     /internaute/{id}
     defaults: { _controller: FrontOfficeBundle:Trajets:showInternaute }
+    requirements:
+      id: '\d+'
+
+front_office_trajet:
+    path:     /trajet/{id}
+    defaults: { _controller: FrontOfficeBundle:Trajets:showTrajet }
     requirements:
       id: '\d+'

@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title>Trajet</title>
+  </head>
+  <body>
+    <table>
+        <ul>
+          <li><b>Ville de départ</b>: {{ trajet.ville.ville }}</li>
+          <li><b>Ville d'arrivée</b>: {{ trajet.ville1.ville }}</li>
+          <li><b>Distance</b>: {{ trajet.nbKm }} km</li>
+          <li><b>Conducteur</b>: <a href="/trajet/{{trajet.internaute.id}}">{{trajet.internaute.prenom}} {{trajet.internaute.nom}}<a></li>
+          <li><b>Voiture</b>: {{ trajet.internaute.voiture.voiture }}</li></tr>
+          <li><b>Nombre de places</b>: {{ trajet.internaute.voiture.nbPlaces }}</li></tr>
+          <li><b>Date</b>: {{ trajet.date }}</li></tr>
+        </ul>
+    </table>
+  </body>
+</html>

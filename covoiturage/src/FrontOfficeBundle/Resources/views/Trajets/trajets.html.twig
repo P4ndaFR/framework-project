@@ -5,7 +5,7 @@
   <body>
     <table>
       {% for item in trajets %}
-        <tr><td><b>De</b>: {{ item.ville.ville }}</td><td><b>A</b>: {{ item.ville1.ville }}</td><td><b>Distance</b>: {{ item.nbKm }} km</td><td><b>Conducteur</b>: <a href="/internaute/{{item.internaute.id}}">{{item.internaute.prenom}} {{item.internaute.nom}}<a> </td><td><b>Date</b>: {{ item.date }}</td></tr>
+        <tr><td><b>De</b>: {{ item.ville.ville }}</td><td><b>A</b>: {{ item.ville1.ville }}</td><td><b>Distance</b>: {{ item.nbKm }} km</td><td><b>Conducteur</b>: <a href="/internaute/{{item.internaute.id}}">{{item.internaute.prenom}} {{item.internaute.nom}}<a> </td><td><b>Date</b>: {{ item.date }}</td><td><a href="/trajet/{{item.id}}">Détail</a></td></tr>
       {% endfor %}
     </table>
   </body>

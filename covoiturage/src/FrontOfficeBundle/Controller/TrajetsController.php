@@ -23,9 +23,22 @@ class TrajetsController extends Controller
         $internaute = $repository->find($id);
         if (!$internaute) {
           throw $this->createNotFoundException(
-            'No internaute found for id '.$internaute
+            'No internaute found for id '.$id
           );
         }
         return $this->render('FrontOfficeBundle:Trajets:internaute.html.twig', [ 'internaute' => $internaute ]);
+    }
+    public function showTrajetAction($id)
+    {
+        $em = $this->get('doctrine')->getManager();
+        $repository = $em->getRepository('FrontOfficeBundle:Trajet');
+        $trajet = $repository->find($id);
+        if (!$trajet) {
+          throw $this->createNotFoundException(
+            'No internaute found for id '.$id
+          );
+        }
+        $trajet->setDate(date_format($trajet->getDate(),'Y-m-d H:i'));
+        return $this->render('FrontOfficeBundle:Trajets:trajet.html.twig', [ 'trajet' => $trajet ]);
     }
 }
