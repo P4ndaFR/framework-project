@@ -17,6 +17,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
             new FrontOfficeBundle\FrontOfficeBundle(),
+            new ApiBundle\ApiBundle(),
             new covoiturage\BackOfficeBundle\covoiturageBackOfficeBundle(),
         ];
 

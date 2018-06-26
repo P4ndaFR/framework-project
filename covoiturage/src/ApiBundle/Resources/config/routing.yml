@@ -1,0 +1,13 @@
+api_home:
+    path:     /
+    defaults: { _controller: ApiBundle:Api:show }
+
+api_search:
+    path:     /search
+    defaults: { _controller: ApiBundle:Api:search }
+
+api_detail:
+    path:     /trajet/{id}
+    defaults: { _controller: ApiBundle:Api:showTrajet }
+    requirements:
+      id: '\d+'
