@@ -29,9 +29,6 @@ class TrajetsController extends Controller
         )->setParameter('part', $request->request->get('ville'));
 
         $trajets = $qb->getResult();
-        foreach($trajets as $trajet){
-          $trajet->setDate(date_format($trajet->getDate(),'Y-m-d H:i'));
-        }
       }else if($request->request->get('type')==0){
         $qb = $em->createQuery(
            "SELECT t FROM FrontOfficeBundle:Trajet t
@@ -39,23 +36,19 @@ class TrajetsController extends Controller
         )->setParameter('part', $request->request->get('ville'));
 
         $trajets = $qb->getResult();
-        foreach($trajets as $trajet){
-          $trajet->setDate(date_format($trajet->getDate(),'Y-m-d H:i'));
-        }
+      }else if($request->request->get('type')==2){
+        $qb = $em->createQuery(
+           "SELECT t FROM FrontOfficeBundle:Trajet t
+            JOIN t.ville d
+            JOIN t.ville1 a
+            WHERE d.ville LIKE CONCAT('%',:part,'%') OR a.ville LIKE CONCAT('%',:part,'%')"
+        )->setParameter('part', $request->request->get('ville'));
+      }
+      $trajets = $qb->getResult();
+      foreach($trajets as $trajet){
+        $trajet->setDate(date_format($trajet->getDate(),'Y-m-d H:i'));
       }
       return $this->render('FrontOfficeBundle:Trajets:trajets.html.twig', [ 'trajets' => $trajets ]);
-    }
-    public function showInternauteAction($id)
-    {
-        $em = $this->get('doctrine')->getManager();
-        $repository = $em->getRepository('FrontOfficeBundle:Internaute');
-        $internaute = $repository->find($id);
-        if (!$internaute) {
-          throw $this->createNotFoundException(
-            'No internaute found for id '.$id
-          );
-        }
-        return $this->render('FrontOfficeBundle:Trajets:internaute.html.twig', [ 'internaute' => $internaute ]);
     }
     public function showTrajetAction($id)
     {
