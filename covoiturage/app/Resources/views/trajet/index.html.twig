@@ -1,0 +1,41 @@
+{% extends 'covoiturageBackOfficeBundle::layout.html.twig' %}
+
+{% block body %}
+    <h1>Liste Trajet</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nbkm</th>
+                <th>Date</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for trajet in trajets %}
+            <tr>
+                <td><a href="{{ path('adminbo_trajet_show', { 'id': trajet.id }) }}">{{ trajet.nbKm }}</a></td>
+                <td>{% if trajet.date %}{{ trajet.date|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ trajet.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('adminbo_trajet_show', { 'id': trajet.id }) }}">Détail</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('adminbo_trajet_edit', { 'id': trajet.id }) }}">Modifier</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('adminbo_trajet_new') }}">Ajouter Trajet</a>
+        </li>
+    </ul>
+{% endblock %}

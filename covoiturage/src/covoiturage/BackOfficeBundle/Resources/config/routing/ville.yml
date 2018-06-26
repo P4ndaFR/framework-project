@@ -1,0 +1,24 @@
+ville_index:
+    path:     /
+    defaults: { _controller: "covoiturageBackOfficeBundle:Ville:index" }
+    methods:  GET
+
+ville_show:
+    path:     /{id}/show
+    defaults: { _controller: "covoiturageBackOfficeBundle:Ville:show" }
+    methods:  GET
+
+ville_new:
+    path:     /new
+    defaults: { _controller: "covoiturageBackOfficeBundle:Ville:new" }
+    methods:  [GET, POST]
+
+ville_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "covoiturageBackOfficeBundle:Ville:edit" }
+    methods:  [GET, POST]
+
+ville_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "covoiturageBackOfficeBundle:Ville:delete" }
+    methods:  DELETE

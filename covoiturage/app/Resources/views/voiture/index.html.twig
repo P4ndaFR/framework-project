@@ -1,0 +1,41 @@
+{% extends 'covoiturageBackOfficeBundle::layout.html.twig' %}
+
+{% block body %}
+    <h1>Liste Véhicules</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Voiture</th>
+                <th>Nbplaces</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for voiture in voitures %}
+            <tr>
+                <td><a href="{{ path('voiture_show', { 'id': voiture.id }) }}">{{ voiture.voiture }}</a></td>
+                <td>{{ voiture.nbPlaces }}</td>
+                <td>{{ voiture.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('voiture_show', { 'id': voiture.id }) }}">Détail</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('voiture_edit', { 'id': voiture.id }) }}">Modifier</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('voiture_new') }}">Ajouter un nouveau véhicule</a>
+        </li>
+    </ul>
+{% endblock %}

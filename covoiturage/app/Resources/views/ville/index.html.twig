@@ -1,0 +1,41 @@
+{% extends 'covoiturageBackOfficeBundle::layout.html.twig' %}
+
+{% block body %}
+    <h1>Liste Villes</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Ville</th>
+                <th>Cp</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ville in villes %}
+            <tr>
+                <td><a href="{{ path('ville_show', { 'id': ville.id }) }}">{{ ville.ville }}</a></td>
+                <td>{{ ville.cp }}</td>
+                <td>{{ ville.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('ville_show', { 'id': ville.id }) }}">Détail</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('ville_edit', { 'id': ville.id }) }}">Modifier</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('ville_new') }}">Ajouter une Ville</a>
+        </li>
+    </ul>
+{% endblock %}
