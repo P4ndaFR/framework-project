@@ -1,3 +1,7 @@
+covoiturage_back_office:
+    resource: "@covoiturageBackOfficeBundle/Resources/config/routing.yml"
+    prefix:   /adminbo
+
 front_office:
     resource: "@FrontOfficeBundle/Resources/config/routing.yml"
     prefix:   /
