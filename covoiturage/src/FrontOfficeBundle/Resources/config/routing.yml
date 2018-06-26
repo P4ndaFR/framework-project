@@ -2,6 +2,11 @@ front_office_trajets:
     path:     /
     defaults: { _controller: FrontOfficeBundle:Trajets:show }
 
+front_office_recherche:
+    path:     /recherche
+    defaults: { _controller: FrontOfficeBundle:Trajets:search }
+    methods: [POST]
+
 front_office_internaute:
     path:     /internaute/{id}
     defaults: { _controller: FrontOfficeBundle:Trajets:showInternaute }

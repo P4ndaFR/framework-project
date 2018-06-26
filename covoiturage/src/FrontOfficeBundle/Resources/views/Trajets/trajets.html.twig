@@ -3,6 +3,15 @@
     <title>Trajets</title>
   </head>
   <body>
+    <form action="/recherche" method="post">
+      Ville:
+      <input type='text' name="ville"><br>
+      Type:<br>
+      <input type='radio' name="type" value="1">Ville de départ<br>
+      <input type='radio' name="type" value="0">Ville d'arrivée<br>
+      <input type="submit" value="Chercher"><br>
+      <a href="/">Tout afficher</a>
+    </form>
     <table>
       {% for item in trajets %}
         <tr><td><b>De</b>: {{ item.ville.ville }}</td><td><b>A</b>: {{ item.ville1.ville }}</td><td><b>Distance</b>: {{ item.nbKm }} km</td><td><b>Conducteur</b>: <a href="/internaute/{{item.internaute.id}}">{{item.internaute.prenom}} {{item.internaute.nom}}<a> </td><td><b>Date</b>: {{ item.date }}</td><td><a href="/trajet/{{item.id}}">Détail</a></td></tr>
