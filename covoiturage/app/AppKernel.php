@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new FrontOfficeBundle\FrontOfficeBundle(),
             new ApiBundle\ApiBundle(),
+            new covoiturage\BackOfficeBundle\covoiturageBackOfficeBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
