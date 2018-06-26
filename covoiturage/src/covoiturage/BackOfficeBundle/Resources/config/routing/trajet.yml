@@ -1,0 +1,24 @@
+adminbo_trajet_index:
+    path:     /
+    defaults: { _controller: "covoiturageBackOfficeBundle:Trajet:index" }
+    methods:  GET
+
+adminbo_trajet_show:
+    path:     /{id}/show
+    defaults: { _controller: "covoiturageBackOfficeBundle:Trajet:show" }
+    methods:  GET
+
+adminbo_trajet_new:
+    path:     /new
+    defaults: { _controller: "covoiturageBackOfficeBundle:Trajet:new" }
+    methods:  [GET, POST]
+
+adminbo_trajet_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "covoiturageBackOfficeBundle:Trajet:edit" }
+    methods:  [GET, POST]
+
+adminbo_trajet_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "covoiturageBackOfficeBundle:Trajet:delete" }
+    methods:  DELETE

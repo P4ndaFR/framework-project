@@ -1,0 +1,44 @@
+{% extends 'covoiturageBackOfficeBundle::layout.html.twig' %}
+
+{% block body %}
+    <h1>Internaute</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Nom</th>
+                <td>{{ internaute.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ internaute.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ internaute.tel }}</td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>{{ internaute.mail }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ internaute.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('adminbo_internaute_index') }}">Retour</a>
+        </li>
+        <li>
+            <a href="{{ path('adminbo_internaute_edit', { 'id': internaute.id }) }}">Modifier</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Supprimer">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

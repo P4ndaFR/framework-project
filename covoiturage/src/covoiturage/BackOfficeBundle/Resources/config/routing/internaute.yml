@@ -1,0 +1,24 @@
+adminbo_internaute_index:
+    path:     /
+    defaults: { _controller: "covoiturageBackOfficeBundle:Internaute:index" }
+    methods:  GET
+
+adminbo_internaute_show:
+    path:     /{id}/show
+    defaults: { _controller: "covoiturageBackOfficeBundle:Internaute:show" }
+    methods:  GET
+
+adminbo_internaute_new:
+    path:     /new
+    defaults: { _controller: "covoiturageBackOfficeBundle:Internaute:new" }
+    methods:  [GET, POST]
+
+adminbo_internaute_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "covoiturageBackOfficeBundle:Internaute:edit" }
+    methods:  [GET, POST]
+
+adminbo_internaute_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "covoiturageBackOfficeBundle:Internaute:delete" }
+    methods:  DELETE

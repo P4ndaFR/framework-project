@@ -1,3 +1,19 @@
+covoiturage_back_office_adminbo_internaute:
+    resource: "@covoiturageBackOfficeBundle/Resources/config/routing/internaute.yml"
+    prefix:   /internaute
+
+covoiturage_back_office_adminbo_trajet:
+    resource: "@covoiturageBackOfficeBundle/Resources/config/routing/trajet.yml"
+    prefix:   /trajet
+
+covoiturage_back_office_voiture:
+    resource: "@covoiturageBackOfficeBundle/Resources/config/routing/voiture.yml"
+    prefix:   /voiture
+
+covoiturage_back_office_ville:
+    resource: "@covoiturageBackOfficeBundle/Resources/config/routing/ville.yml"
+    prefix:   /ville
+
 covoiturage_back_office_homepage:
     path:     /
     defaults: { _controller: covoiturageBackOfficeBundle:Default:index }

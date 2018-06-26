@@ -1,0 +1,45 @@
+{% extends 'covoiturageBackOfficeBundle::layout.html.twig' %}
+
+{% block body %}
+    <h1>Liste Internaute</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Tel</th>
+                <th>Mail</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for internaute in internautes %}
+            <tr>
+                <td><a href="{{ path('adminbo_internaute_show', { 'id': internaute.id }) }}">{{ internaute.nom }}</a></td>
+                <td>{{ internaute.prenom }}</td>
+                <td>{{ internaute.tel }}</td>
+                <td>{{ internaute.mail }}</td>
+                <td>{{ internaute.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('adminbo_internaute_show', { 'id': internaute.id }) }}">Détail</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('adminbo_internaute_edit', { 'id': internaute.id }) }}">Modifier</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('adminbo_internaute_new') }}">Ajouter Internaute</a>
+        </li>
+    </ul>
+{% endblock %}

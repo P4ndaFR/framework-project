@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}CRUD{% endblock %}</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" crossorigin="anonymous">
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% include('covoiturageBackOfficeBundle::entete.html.twig') %}
+        <div  class="container">
+          {% block body %}{% endblock %}
+        </div>
+        {% block javascripts %}{% endblock %}
+        {% include('covoiturageBackOfficeBundle::footer.html.twig') %}
+    </body>
+</html>
