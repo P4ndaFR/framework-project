@@ -13,40 +13,40 @@ class DefaultController extends Controller
         $rsm = new ResultSetMapping();
         // build rsm here
 
-        $query = $entityManager->createNativeQuery('SELECT COUNT(internaute.id) AS nbI FROM internaute', $rsm);
+        $qb = $entityManager->createNativeQuery('SELECT COUNT(internaute.id) AS nbI FROM internaute', $rsm);
 
-        $nbI = $query->getResult();*/
+        $nbI = $qb->getResult();*/
 
         $em = $this->getDoctrine()->getManager();
 
-        $query = $em->createQuery("SELECT count(i.id) as total FROM FrontOfficeBundle:Internaute i");
-        $resultat = $query->getResult();
-        $nbI = $resultat[0]['total'];
+        $qb = $em->createQuery("SELECT count(i.id) as total FROM FrontOfficeBundle:Internaute i");
+        $res = $qb->getResult();
+        $nbI = $res[0]['total'];
 
-        $query = $em->createQuery("SELECT count(t.internaute) total FROM FrontOfficeBundle:Trajet t group by t.internaute having count(t.internaute) > 2");
-        $resultat = $query->getResult();
-        $nbI2 = count($resultat);
+        $qb = $em->createQuery("SELECT count(t.internaute) total FROM FrontOfficeBundle:Trajet t group by t.internaute having count(t.internaute) > 2");
+        $res = $qb->getResult();
+        $nbI2 = count($res);
 
-        $query = $em->createQuery("SELECT IDENTITY(t.ville) as ville_id, count(t) total FROM FrontOfficeBundle:Trajet t group by t.ville order by total desc")->setMaxResults(5);
-        $resultat = $query->getResult();
-        $top_depart = array();
-        foreach ($resultat as $data) {
-            $ville = $em->getRepository('FrontOfficeBundle:Ville')->findById($data['ville_id']);
-            $top_depart[] = $ville[0];
+        $qb = $em->createQuery("SELECT IDENTITY(t.ville) as ville_id, count(t) total FROM FrontOfficeBundle:Trajet t group by t.ville order by total desc")->setMaxResults(5);
+        $res = $qb->getResult();
+        $tD = array();
+        foreach ($res as $item) {
+            $ville = $em->getRepository('FrontOfficeBundle:Ville')->findById($item['ville_id']);
+            $tD[] = $ville[0];
         }
 
-        $query = $em->createQuery("SELECT IDENTITY(t.ville) as ville_id, count(t) total FROM FrontOfficeBundle:Trajet t group by t.ville order by total desc")->setMaxResults(5);
-        $resultat = $query->getResult();
-        $top_arrivee = array();
-        foreach ($resultat as $data) {
-            $ville = $em->getRepository('FrontOfficeBundle:Ville')->findById($data['ville_id']);
-            $top_arrivee[] = $ville[0];
+        $qb = $em->createQuery("SELECT IDENTITY(t.ville) as ville_id, count(t) total FROM FrontOfficeBundle:Trajet t group by t.ville order by total desc")->setMaxResults(5);
+        $res = $qb->getResult();
+        $tA = array();
+        foreach ($res as $item) {
+            $ville = $em->getRepository('FrontOfficeBundle:Ville')->findById($item['ville_id']);
+            $tA[] = $ville[0];
         }
 
         return $this->render('covoiturageBackOfficeBundle:Default:index.html.twig',
           array("nbI" => $nbI,
                 "nbI2" => $nbI2,
-                "tD" => $top_depart,
-                "tA" => $top_arrivee));
+                "tD" => $tD,
+                "tA" => $tA));
     }
 }
