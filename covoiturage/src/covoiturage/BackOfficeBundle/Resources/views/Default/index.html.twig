@@ -2,4 +2,26 @@
 
 {% block body %}
     <h1>Welcome to BackOffice</h1>
+    <hr/>
+
+    <h4>Nombre d'internaute:</h4>
+    <ul><li>{{ nbI }}</li></ul>
+
+    <h4>Nombre d'internaute avec plus de 2 trajets:</h4>
+    <ul><li>{{ nbI2 }}</li></ul>
+
+
+    <h4>Top 5 villes de départ:</h4>
+    <ul>
+    {% for item in tD %}
+        <li>{{ item.ville }}</li>
+    {% endfor %}
+    </ul>
+
+    <h4>Top 5 villes d'arrivée:</h4>
+    <ul>
+    {% for item in tA %}
+        <li>{{ item.ville }}</li>
+    {% endfor %}
+    </ul>
 {% endblock %}
