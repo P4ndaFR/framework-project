@@ -16,10 +16,12 @@ class ApiController extends Controller
 {
     public function showAction()
     {
+      //Initialisation
       $encoders = array(new XmlEncoder(), new JsonEncoder());
       $normalizers = array(new ObjectNormalizer());
       $serializer = new Serializer($normalizers, $encoders);
 
+      //Recuperation des données
       $em = $this->get('doctrine')->getManager();
       $repository = $em->getRepository('FrontOfficeBundle:Trajet');
       $qb = $em->createQuery(
@@ -38,6 +40,8 @@ class ApiController extends Controller
       $response->headers->set('Vary', 'Origin');
       return $response;
     }
+
+
     public function searchAction(Request $request)
     {
       if ($request->isMethod('options')) {
@@ -58,6 +62,7 @@ class ApiController extends Controller
       $repository = $em->getRepository('FrontOfficeBundle:Trajet');
       if($parameters['type']=='start')
       {
+        //Requete sur les villes de depart
         $qb = $em->createQuery(
            "SELECT t,d,a,i FROM FrontOfficeBundle:Trajet t
             JOIN t.ville d
@@ -69,6 +74,7 @@ class ApiController extends Controller
         $trajets = $qb->getArrayResult();
       }
       if($parameters['type']=='stop'){
+        //Requete sur les villes d'arrivée
         $qb = $em->createQuery(
            "SELECT t,d,a,i FROM FrontOfficeBundle:Trajet t
            JOIN t.ville d
@@ -80,6 +86,7 @@ class ApiController extends Controller
         $trajets = $qb->getArrayResult();
       }
       if($parameters['type']=='both'){
+        //Requete sur les villes de depart et arrivee
         $qb = $em->createQuery(
            "SELECT t,d,a,i FROM FrontOfficeBundle:Trajet t
            JOIN t.ville d
@@ -101,6 +108,7 @@ class ApiController extends Controller
     }
     public function showTrajetAction($id)
     {
+      //Recuperation des infos d'un trajet
         $em = $this->get('doctrine')->getManager();
         $repository = $em->getRepository('FrontOfficeBundle:Trajet');
         $qb = $em->createQuery(
