@@ -29,17 +29,34 @@ class ApiController extends Controller
           JOIN t.internaute i"
       );
       $trajets = $qb->getArrayResult();
-      return $this->json($trajets);
+      $response = new Response(json_encode($trajets));
+      $response->headers->set('Content-Type', 'application/json');
+      $response->headers->set('Access-Control-Allow-Credentials', 'true');
+      $response->headers->set('Access-Control-Allow-Headers', 'Origin, Content-Type, Accept, Authorization');
+      $response->headers->set('Access-Control-Allow-Origin', '*');
+      $response->headers->set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, PATCH, OPTIONS');
+      $response->headers->set('Vary', 'Origin');
+      return $response;
     }
     public function searchAction(Request $request)
     {
+      if ($request->isMethod('options')) {
+        $response = new Response();
+        $response->headers->set('Content-Type', 'application/json');
+        $response->headers->set('Access-Control-Allow-Credentials', 'true');
+        $response->headers->set('Access-Control-Allow-Headers', 'Origin, Content-Type, Accept, Authorization');
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+        $response->headers->set('Access-Control-Allow-Methods', 'POST, OPTIONS');
+        $response->headers->set('Vary', 'Origin');
+        return $response;
+      }
       $parameters = [];
       if ($content = $request->getContent()) {
           $parameters = json_decode($content, true);
       }
       $em = $this->get('doctrine')->getManager();
       $repository = $em->getRepository('FrontOfficeBundle:Trajet');
-      if(strcmp($parameters['type'],'start'))
+      if($parameters['type']=='start')
       {
         $qb = $em->createQuery(
            "SELECT t,d,a,i FROM FrontOfficeBundle:Trajet t
@@ -50,7 +67,8 @@ class ApiController extends Controller
         )->setParameter('part', $parameters['part']);
 
         $trajets = $qb->getArrayResult();
-      }else if(strcmp($parameters['type'],'stop')){
+      }
+      if($parameters['type']=='stop'){
         $qb = $em->createQuery(
            "SELECT t,d,a,i FROM FrontOfficeBundle:Trajet t
            JOIN t.ville d
@@ -60,7 +78,8 @@ class ApiController extends Controller
         )->setParameter('part', $parameters['part']);
 
         $trajets = $qb->getArrayResult();
-      }else if(strcmp($parameters['type'],'both')){
+      }
+      if($parameters['type']=='both'){
         $qb = $em->createQuery(
            "SELECT t,d,a,i FROM FrontOfficeBundle:Trajet t
            JOIN t.ville d
@@ -71,7 +90,14 @@ class ApiController extends Controller
 
         $trajets = $qb->getArrayResult();
       }
-      return $this->json($trajets);
+      $response = new Response(json_encode($trajets));
+      $response->headers->set('Content-Type', 'application/json');
+      $response->headers->set('Access-Control-Allow-Credentials', 'true');
+      $response->headers->set('Access-Control-Allow-Headers', 'Origin, Content-Type, Accept, Authorization');
+      $response->headers->set('Access-Control-Allow-Origin', '*');
+      $response->headers->set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, PATCH, OPTIONS');
+      $response->headers->set('Vary', 'Origin');
+      return $response;
     }
     public function showTrajetAction($id)
     {
@@ -86,6 +112,13 @@ class ApiController extends Controller
             WHERE t.id = :id"
         )->setParameter('id', $id);
         $trajets = $qb->getArrayResult();
-        return $this->json($trajets);
+        $response = new Response(json_encode($trajets));
+        $response->headers->set('Content-Type', 'application/json');
+        $response->headers->set('Access-Control-Allow-Credentials', 'true');
+        $response->headers->set('Access-Control-Allow-Headers', 'Origin, Content-Type, Accept, Authorization');
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+        $response->headers->set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, PATCH, OPTIONS');
+        $response->headers->set('Vary', 'Origin');
+        return $response;
     }
 }
