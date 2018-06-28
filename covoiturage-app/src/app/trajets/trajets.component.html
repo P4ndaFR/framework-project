@@ -1,0 +1,19 @@
+Recherche:<br>
+<input type="radio" (change)="setChoice('start')" >Départ
+<input type="radio" (change)="setChoice('stop')">Arrivée
+<input type="radio" (change)="setChoice('both')">Les deux<br>
+<input type="text" [(ngModel)]="part" (keyup)="searchTrajets()">
+<table>
+  <tr>
+    <td>Distance</td><td>Date</td><td>Ville de départ</td><td>Ville d'arrivée</td><td>Conducteur</td><td>Détails</td>
+  </tr>
+  <tr *ngFor="let trajet of trajets; let i=index;">
+    <td>{{ trajet.nbKm }} km</td>
+    <td>{{ trajet.date.date }}</td>
+    <td>{{ trajet.ville.ville }}</td>
+    <td>{{ trajet.ville1.ville }}</td>
+    <td>{{ trajet.internaute.prenom }} {{ trajet.internaute.nom }}</td>
+    <td *ngIf="trajet.detail">Téléphone: {{ trajet.detail[0].internaute.tel }}<br>Email: {{ trajet.detail[0].internaute.mail }}<br>Voiture: {{ trajet.detail[0].internaute.voiture.voiture }}<br>Nombre de places: {{ trajet.detail[0].internaute.voiture.nbPlaces }}</td>
+    <td><button (click)="this.showDetails(i)">Détail</button></td>
+  </tr>
+</table>
