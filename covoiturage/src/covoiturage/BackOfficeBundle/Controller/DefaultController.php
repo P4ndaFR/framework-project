@@ -34,6 +34,7 @@ class DefaultController extends Controller
             $ville = $em->getRepository('FrontOfficeBundle:Ville')->findById($item['ville_id']);
             $tD[] = $ville[0];
         }
+    
 
         $qb = $em->createQuery("SELECT IDENTITY(t.ville) as ville_id, count(t) total FROM FrontOfficeBundle:Trajet t group by t.ville order by total desc")->setMaxResults(5);
         $res = $qb->getResult();
