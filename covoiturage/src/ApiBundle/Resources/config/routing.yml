@@ -5,6 +5,7 @@ api_home:
 api_search:
     path:     /search
     defaults: { _controller: ApiBundle:Api:search }
+    methods: [POST, OPTIONS]
 
 api_detail:
     path:     /trajet/{id}
