@@ -39,11 +39,12 @@ Installer les dépendances symfony
 cd /var/www/framework-project/covoiturage
 composer install --no-dev --optimize-autoloader
 ```
-Entrez vos information de base de donnée:
-url: 127.0.0.1
-port: 3306
-username: your_username
-password: your_password
+Entrez vos information de base de donnée:                                                                       
+url: 127.0.0.1                                        
+port: 3306                                                                        
+name: your_db_name                                                            
+username: your_username                                                                                    
+password: your_password                                                                   
 
 les autres informations ne sont pas utilisées et peuvent être laissées à leur valeur d'origine
 
