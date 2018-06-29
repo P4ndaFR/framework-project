@@ -30,7 +30,7 @@ Mettre en place les virtualhosts Apache
 cp /var/www/framework-project/apache-conf/symfony.conf /etc/apache2/sites-available/
 cp /var/www/framework-project/apache-conf/angular.conf /etc/apache2/sites-available/
 a2ensite angular
-a2ensite framework
+a2ensite symfony
 service apache2 restart
 ```
 
