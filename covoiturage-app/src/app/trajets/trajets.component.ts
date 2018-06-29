@@ -20,7 +20,7 @@ export class TrajetsComponent implements OnInit {
   part: string = '';
   httpOptions: any;
   ngOnInit() {
-    this.url=`http://127.0.0.1:8000/api/`;
+    this.url=`http://prjsymf.cir3-frm-smf-ang-xx/api/`;
     this.fetchTrajets();
   }
   setChoice(choice){
