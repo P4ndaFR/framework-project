@@ -19,14 +19,21 @@ class DefaultController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
+        //Creation de la query
+        //Execution de la query
+        //Recuperation resultat
+
+        //Recuperation du nombre d'internaute
         $qb = $em->createQuery("SELECT count(i.id) as total FROM FrontOfficeBundle:Internaute i");
         $res = $qb->getResult();
         $nbI = $res[0]['total'];
 
+        //Recuperation du nombre d'internaute avec au moins 2 trajets
         $qb = $em->createQuery("SELECT count(t.internaute) total FROM FrontOfficeBundle:Trajet t group by t.internaute having count(t.internaute) > 2");
         $res = $qb->getResult();
         $nbI2 = count($res);
 
+        //Recuperation Top 5 ville de depart
         $qb = $em->createQuery("SELECT IDENTITY(t.ville) as ville_id, count(t) total FROM FrontOfficeBundle:Trajet t group by t.ville order by total desc")->setMaxResults(5);
         $res = $qb->getResult();
         $tD = array();
@@ -35,7 +42,7 @@ class DefaultController extends Controller
             $tD[] = $ville[0];
         }
     
-
+        //Recuperation Top 5 ville d'arrivée
         $qb = $em->createQuery("SELECT IDENTITY(t.ville) as ville_id, count(t) total FROM FrontOfficeBundle:Trajet t group by t.ville order by total desc")->setMaxResults(5);
         $res = $qb->getResult();
         $tA = array();
@@ -44,6 +51,7 @@ class DefaultController extends Controller
             $tA[] = $ville[0];
         }
 
+        //génération Twig
         return $this->render('covoiturageBackOfficeBundle:Default:index.html.twig',
           array("nbI" => $nbI,
                 "nbI2" => $nbI2,

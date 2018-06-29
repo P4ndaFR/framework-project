@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class TrajetsController extends Controller
 {
+    //Lister tout les trajets
     public function showAction()
     {
         $em = $this->get('doctrine')->getManager();
@@ -17,12 +18,15 @@ class TrajetsController extends Controller
         }
         return $this->render('FrontOfficeBundle:Trajets:trajets.html.twig', [ 'trajets' => $trajets ]);
     }
+
+    //Fonction pour la barre de recherche
     public function searchAction(Request $request)
     {
       $em = $this->get('doctrine')->getManager();
       $repository = $em->getRepository('FrontOfficeBundle:Trajet');
       if($request->request->get('type')==1)
       {
+        //Query de recherche sur les villes de depart
         $qb = $em->createQuery(
            "SELECT t FROM FrontOfficeBundle:Trajet t
             JOIN t.ville v WHERE v.ville LIKE CONCAT('%',:part,'%')"
@@ -30,6 +34,7 @@ class TrajetsController extends Controller
 
         $trajets = $qb->getResult();
       }else if($request->request->get('type')==0){
+        //Query de recherche sur les villes d'arrivée
         $qb = $em->createQuery(
            "SELECT t FROM FrontOfficeBundle:Trajet t
             JOIN t.ville1 v WHERE v.ville LIKE CONCAT('%',:part,'%')"
@@ -37,6 +42,7 @@ class TrajetsController extends Controller
 
         $trajets = $qb->getResult();
       }else if($request->request->get('type')==2){
+        //Query de recherche sur les villes de depart et arrivée
         $qb = $em->createQuery(
            "SELECT t FROM FrontOfficeBundle:Trajet t
             JOIN t.ville d
@@ -52,6 +58,7 @@ class TrajetsController extends Controller
     }
     public function showTrajetAction($id)
     {
+      //Afficher les détails d'un trajet
         $em = $this->get('doctrine')->getManager();
         $repository = $em->getRepository('FrontOfficeBundle:Trajet');
         $trajet = $repository->find($id);
