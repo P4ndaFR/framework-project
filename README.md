@@ -4,7 +4,7 @@ Cir 3 API + Webclient Project, starring Symfony and Angular 5
 
 Instructions de déploiement:
 ----------------------------
-Vous devez avoir un environnement Apache PHP mysql configuré, Ainsi que git et composer pour pouvoir réaliser l'installation
+Vous devez avoir un environnement Apache PHP mysql configuré, Ainsi que git et composer pour pouvoir réaliser l'installation, l'encodage de mysql et d'Apache doit être UTF-8
 
 Cloner le dépôt :
 ```
