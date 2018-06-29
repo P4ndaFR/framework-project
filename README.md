@@ -6,16 +6,16 @@ Instructions de déploiement:
 ----------------------------
 Vous devez avoir un environnement Apache PHP mysql configuré, Ainsi que git et composer pour pouvoir réaliser l'installation
 
-1) Cloner le dépôt :
+Cloner le dépôt :
 ```
 git clone https://github.com/nd4pa/framework-project.git
 ```
 
-2) Déplacer le projet dans /var/www
+Déplacer le projet dans /var/www
 ```
 mv framework-project /var/www
 ```
-3) Mettre les droits nécessaires pour l'installation
+Mettre les droits nécessaires pour l'installation
 ```
 chmod 777 -R /var/www/framework-project
 ```
@@ -38,6 +38,17 @@ Installer les dépendances symfony
 ```
 cd /var/www/framework-project/covoiturage
 composer install --no-dev --optimize-autoloader
+```
+Entrez vos information de base de donnée:
+url: 127.0.0.1
+port: 3306
+username: your_username
+password: your_password
+
+les autres informations ne sont pas utilisées et peuvent être laissées à leur valeur d'origine
+
+Vider le cache
+```
 bin/console cache:clear --env=prod  --no-debug
 ```
 
